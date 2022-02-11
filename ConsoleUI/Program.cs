@@ -15,27 +15,40 @@ namespace ConsoleUI
             //Concretelerin içine ise asıl görevi yapanlar
             //abstract'lar ile uygulamalar arasındaki bağlantılar
             //minimize edilir
+            //ProductManager productManager = NewMethod();
+
+            //SOLİD O harfi--> open closed principle
+            //projeye yeni bir şey eklendiğinde öncekiler etkilenmez
+
+            //foreach (var product in productManager.GetAllByCategoryId(2))
+            //{
+            //    Console.WriteLine(product.ProductName);
+            //}
+
+            //foreach (var product in productManager.GetByUnitPrice(50, 100))
+            //{
+            //    Console.WriteLine(product.ProductName);
+            //}
+            CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
+            foreach (var category in categoryManager.GetAll())
+            {
+                Console.WriteLine(category.CategoryName);
+            }
+
+
+
+
+        }
+
+        private static ProductManager NewMethod()
+        {
             ProductManager productManager = new ProductManager(new EfProductDal());
             foreach (var product in productManager.GetAll())
             {
                 Console.WriteLine(product.ProductName);
             }
 
-            //SOLİD O harfi--> open closed principle
-            //projeye yeni bir şey eklendiğinde öncekiler etkilenmez
-
-            foreach (var product in productManager.GetAllByCategoryId(2))
-            {
-                Console.WriteLine(product.ProductName);
-            }
-
-            foreach (var product in productManager.GetByUnitPrice(50,100))
-            {
-                Console.WriteLine(product.ProductName);
-            }
-
-
-
+            return productManager;
         }
     }
 }
