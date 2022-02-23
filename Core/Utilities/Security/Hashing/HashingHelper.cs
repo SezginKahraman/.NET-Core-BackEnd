@@ -15,7 +15,7 @@ namespace Core.Utilities.Security.Hashing
                 passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
             }
         }
-        public static bool VerifyPassowordHash
+        public static bool VerifyPasswordHash
             (string password, byte[] passwordHash, byte[] passwordSalt)
         {
             using (var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt))
